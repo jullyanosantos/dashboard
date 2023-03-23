@@ -3,8 +3,15 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+
 // import { LbdModule } from '../../lbd/lbd.module';
 // import { NguiMapModule} from '@ngui/map';
+// import { PaginatorModule } from 'primeng/paginator';
+
+import { PaginationModule,PaginationConfig } from 'ngx-bootstrap/pagination';
+
+import { DropdownModule } from 'primeng/dropdown';
+import { CalendarModule } from 'primeng/calendar';
 
 import { AdminLayoutRoutes } from './admin-layout.routing';
 import { HomeComponent } from '../../home/home.component';
@@ -25,7 +32,12 @@ import { BusyIfDirective } from 'src/app/shared/directive/busy-if.directive';
     CommonModule,
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
-
+    ReactiveFormsModule,
+    PaginationModule,
+    
+    CalendarModule,
+    DropdownModule,
+    
     ModalModule.forRoot()
   ],
   declarations: [
@@ -42,6 +54,7 @@ import { BusyIfDirective } from 'src/app/shared/directive/busy-if.directive';
     BusyIfDirective
   ],
   providers: [
+    PaginationConfig
     // BsModalRef
   ],
   exports: [BusyIfDirective]

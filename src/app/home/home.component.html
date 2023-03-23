@@ -102,12 +102,131 @@
                 </div>
             </div>
         </div>
-    </div>
 
-    <app-details-modal #modalDetalhe></app-details-modal>
-    <button type="button" class="btn btn-primary" (click)="showDetails()">Open modal</button>
+        <div class="row">
+            <app-details-modal #modalDetalhe></app-details-modal>
+            <button type="button" class="btn btn-primary" (click)="showDetails()">Open modal</button>
+        </div>
 
-    <!-- <ng-template #template>
+        <!-- <form class="form-inline" action="/action_page.php">
+
+            <div class="form-check mb-2 mr-sm-2">
+                <label for="email" class="mr-sm-2">Email address:</label>
+                <p-dropdown #idParceiro id="dropParceiro" [options]="parceiros" [(ngModel)]="selectedParceiro"
+                    optionLabel="name"></p-dropdown>
+            </div>
+
+            <div class="form-check mb-2 mr-sm-2">
+                <label for="pwd" class="mr-sm-2">Password:</label>
+                <input type="password" class="form-control mb-2 mr-sm-2" placeholder="Enter password" id="pwd">
+            </div>
+
+            <div class="form-check mb-2 mr-sm-2">
+                <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox"> Remember me
+                </label>
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Submit</button>
+        </form> -->
+
+
+        <!-- <form class="form-inline">
+            <div class="form-group">
+                <label for="dropParceiro">Parceiro:</label>
+                <p-dropdown #idParceiro id="dropParceiro" [options]="parceiros" [(ngModel)]="selectedParceiro"
+                    optionLabel="name"></p-dropdown>
+            </div>
+            <div class="form-group">
+                <label>Data Inicio:</label>
+                <p-calendar [(ngModel)]="date" dateFormat="dd/mm/yy"></p-calendar>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox"> Remember me
+                </label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form> -->
+
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label for="inputParceiro">Parceiro</label>
+                    <p-dropdown id="inputParceiro" [style]="{'minWidth':'100%'}" [options]="parceiros"
+                        [(ngModel)]="selectedParceiro" optionLabel="name" class="p-inputtext-sm"></p-dropdown>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="inputDtinicio">Data Início</label>
+                    <p-calendar id="inputDtInicio" [style]="{'minWidth':'100%'}" class="p-inputtext-sm"
+                        [(ngModel)]="date" dateFormat="dd/mm/yy"></p-calendar>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="inputDtFim">Data Fim</label>
+                    <p-calendar id="inputDtFnicio" [style]="{'minWidth':'100%'}" class="p-inputtext-sm"
+                        [(ngModel)]="date" dateFormat="dd/mm/yy"></p-calendar>
+                </div>
+                <div class="form-group col-md-3">
+                    <div class="col-lg-3 col-sm-6">
+                        <label>&nbsp;</label>
+                        <button  type="submit" class="btn btn-primary mb-2">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <!-- <form class="form-inline"> -->
+        <!-- <div class="row mt-5"> -->
+        <form class="row mt-5 form-inline">
+            <div class="col-lg-3 col-sm-6 form-group">
+                <label class="pull-left">Parceiro</label>
+                <p-dropdown [options]="parceiros" [(ngModel)]="selectedParceiro" optionLabel="name"
+                    class="p-inputtext-sm"></p-dropdown>
+            </div>
+
+            <div class="col-lg-3 col-sm-6">
+                <label>Data Inicio</label>
+                <p-calendar class="p-inputtext-sm" [(ngModel)]="date" dateFormat="dd/mm/yy"></p-calendar>
+            </div>
+            <!-- <div class="col-md-auto"></div> -->
+
+            <div class="col-lg-3 col-sm-6">
+                <label>Data Fim</label>
+                <p-calendar class="p-inputtext-sm" [(ngModel)]="date" dateFormat="dd/mm/yy"></p-calendar>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <label>&nbsp;</label>
+                <button  type="submit" class="btn btn-primary mb-2">Submit</button>
+            </div>
+        </form>
+
+        <!-- </div> -->
+        <!-- </form> -->
+        <!-- <div class="row">
+        <div class="paginator">
+            <p-paginator [first]="0" [rows]="5" [totalRecords]="120" [rowsPerPageOptions]="[10, 20, 30]"></p-paginator>
+        </div>
+    </div> -->
+
+        <!-- <nav aria-label="...">
+        <ul class="pagination">
+            <li class="page-item disabled">
+                <span class="page-link">Previous</span>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item active">
+                <span class="page-link">
+                    2
+                    <span class="sr-only">(current)</span>
+                </span>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+            </li>
+        </ul>
+    </nav>
+     -->
+        <!-- <ng-template #template>
         <div class="modal-header">
             <h4 class="modal-title pull-left">Modal</h4>
             <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
@@ -122,4 +241,4 @@
         </div>
     </ng-template> -->
 
-</div>
+    </div>

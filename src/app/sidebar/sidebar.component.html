@@ -92,7 +92,7 @@ Tip 2: you can also add an image using data-image tag
 
         <li routerLinkActive="active" *ngFor="let menuItem of menus" class="nav-item  {{menuItem.class}}">
             <a class="nav-link" [routerLink]="[menuItem.path]" *ngIf="menuItem.type !== 'dropdown'">
-                <span *ngIF="menuItem.icon != ''" class="sidebar-mini">{{getShortName(menuItem.title)}}</span>
+                <span *ngIf="menuItem.icon === ''" class="sidebar-mini">{{getShortName(menuItem.title)}}</span>
                 <i class="{{menuItem.icon}}"></i>
                 <p>{{menuItem.title}}</p>
             </a>
@@ -125,7 +125,7 @@ Tip 2: you can also add an image using data-image tag
         </li> -->
 
 
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link collapsed" data-toggle="collapse" href="#componentsExamples" aria-expanded="false">
                 <i class="nc-icon nc-app"></i>
                 <p>
@@ -339,7 +339,7 @@ Tip 2: you can also add an image using data-image tag
                     </li>
                 </ul>
             </div>
-        </li>
+        </li> -->
     </ul>
 </div>
 <div class="sidebar-background" style="background-image: url(../assets/img/sidebar-5.jpg) "></div>
