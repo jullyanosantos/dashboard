@@ -1,10 +1,13 @@
-import { NgModule, Injector, APP_INITIALIZER, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ServicesBaseModule } from '../assets/lib/service-base/services-base.module';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
+
+import { AdminLayoutModule } from './layouts/admin-layout/admin-layout.module';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { NavbarModule } from './shared/navbar/navbar.module';
 import { FooterModule } from './shared/footer/footer.module';
@@ -16,13 +19,18 @@ import { SidebarModule } from './sidebar/sidebar.module';
     AdminLayoutComponent
   ],
   imports: [
-    BrowserAnimationsModule,
+    BrowserModule,
     AppRoutingModule,
-    ServicesBaseModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+
+    AdminLayoutModule,
     NavbarModule,
     FooterModule,
     SidebarModule,
-    
+    FormsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent],

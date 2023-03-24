@@ -1,18 +1,24 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 // import { LbdModule } from '../../lbd/lbd.module';
 // import { NguiMapModule} from '@ngui/map';
 // import { PaginatorModule } from 'primeng/paginator';
 
-import { PaginationModule,PaginationConfig } from 'ngx-bootstrap/pagination';
-
+import { TableModule } from 'primeng/table';
 import { DropdownModule } from 'primeng/dropdown';
 import { CalendarModule } from 'primeng/calendar';
+import { TooltipModule } from 'primeng/tooltip';
+import { PaginatorModule } from 'primeng/paginator';
 
+import { PaginationModule, PaginationConfig } from 'ngx-bootstrap/pagination';
+
+import { InputTextModule } from 'primeng/inputtext';
+
+import { ServicesBaseModule } from 'src/assets/lib/service-base/services-base.module';
 import { AdminLayoutRoutes } from './admin-layout.routing';
 import { HomeComponent } from '../../home/home.component';
 import { UserComponent } from '../../user/user.component';
@@ -25,6 +31,8 @@ import { DetailsModalComponent } from '../../home/details-modal.component';
 // import { UpgradeComponent } from '../../upgrade/upgrade.component';
 
 import { ModalModule, BsModalRef } from 'ngx-bootstrap/modal';
+import { ToastrModule } from 'ngx-toastr';
+
 import { BusyIfDirective } from 'src/app/shared/directive/busy-if.directive';
 
 @NgModule({
@@ -33,12 +41,21 @@ import { BusyIfDirective } from 'src/app/shared/directive/busy-if.directive';
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
     ReactiveFormsModule,
+    TableModule,
+    PaginatorModule,
+
+
     PaginationModule,
-    
+
+    InputTextModule,
     CalendarModule,
+    TooltipModule,
     DropdownModule,
-    
-    ModalModule.forRoot()
+
+    ModalModule.forRoot(),
+    ToastrModule.forRoot(),
+
+    ServicesBaseModule
   ],
   declarations: [
     HomeComponent,
@@ -52,6 +69,7 @@ import { BusyIfDirective } from 'src/app/shared/directive/busy-if.directive';
     // UpgradeComponent
 
     BusyIfDirective
+  
   ],
   providers: [
     PaginationConfig

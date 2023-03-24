@@ -148,54 +148,48 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         </form> -->
 
-        <form>
+        <form #formSave [formGroup]="form" (submit)="onSubmit(formSave)">
             <div class="form-row">
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-6">
                     <label for="inputParceiro">Parceiro</label>
-                    <p-dropdown id="inputParceiro" [style]="{'minWidth':'100%'}" [options]="parceiros"
-                        [(ngModel)]="selectedParceiro" optionLabel="name" class="p-inputtext-sm"></p-dropdown>
+                    <p-dropdown #inputParceiro id="inputParceiro" name="inputParceiro" [style]="{'minWidth':'100%'}"
+                        [options]="parceiros" [(ngModel)]="selectedParceiro" optionLabel="name"
+                        class="p-inputtext-sm"></p-dropdown>
                 </div>
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-6">
+                    <label for="username">Username</label>
+                    <input id="username" name="username" required pInputText #username formControlName="username"
+                        [style]="{'minWidth':'100%'}"
+                        [ngClass]="{ 'ng-invalid ng-dirty': submitted && f['username'].errors }"
+                        class="p-inputtext-sm" />
+                    <div *ngIf="submitted && f['username'].errors" class="text-danger">
+                        <small *ngIf="f['username'].errors['required']">Username is required</small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
                     <label for="inputDtinicio">Data Início</label>
-                    <p-calendar id="inputDtInicio" [style]="{'minWidth':'100%'}" class="p-inputtext-sm"
-                        [(ngModel)]="date" dateFormat="dd/mm/yy"></p-calendar>
+                    <p-calendar id="inputDtInicio" name="inputDtInicio" formControlName="startDateControl"
+                        [required]="true"
+                        [ngClass]="{ 'ng-invalid ng-dirty': submitted && f['startDateControl'].errors }"
+                        [style]="{'minWidth':'100%'}" class="p-inputtext-sm" [(ngModel)]="date"
+                        dateFormat="dd/mm/yy"></p-calendar>
+                    <div *ngIf="submitted && f['startDateControl'].errors" class="text-danger">
+                        <small *ngIf="f['startDateControl'].errors['required']">Startdate is required</small>
+                    </div>
                 </div>
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-4">
                     <label for="inputDtFim">Data Fim</label>
-                    <p-calendar id="inputDtFnicio" [style]="{'minWidth':'100%'}" class="p-inputtext-sm"
+                    <p-calendar name="inputDtFim" id="inputDtFim" [style]="{'minWidth':'100%'}" class="p-inputtext-sm"
                         [(ngModel)]="date" dateFormat="dd/mm/yy"></p-calendar>
                 </div>
                 <div class="form-group col-md-3">
                     <div class="col-lg-3 col-sm-6">
                         <label>&nbsp;</label>
-                        <button  type="submit" class="btn btn-primary mb-2">Submit</button>
+                        <button type="submit" class="btn btn-primary mb-2">Submit</button>
                     </div>
                 </div>
-            </div>
-        </form>
-
-        <!-- <form class="form-inline"> -->
-        <!-- <div class="row mt-5"> -->
-        <form class="row mt-5 form-inline">
-            <div class="col-lg-3 col-sm-6 form-group">
-                <label class="pull-left">Parceiro</label>
-                <p-dropdown [options]="parceiros" [(ngModel)]="selectedParceiro" optionLabel="name"
-                    class="p-inputtext-sm"></p-dropdown>
-            </div>
-
-            <div class="col-lg-3 col-sm-6">
-                <label>Data Inicio</label>
-                <p-calendar class="p-inputtext-sm" [(ngModel)]="date" dateFormat="dd/mm/yy"></p-calendar>
-            </div>
-            <!-- <div class="col-md-auto"></div> -->
-
-            <div class="col-lg-3 col-sm-6">
-                <label>Data Fim</label>
-                <p-calendar class="p-inputtext-sm" [(ngModel)]="date" dateFormat="dd/mm/yy"></p-calendar>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <label>&nbsp;</label>
-                <button  type="submit" class="btn btn-primary mb-2">Submit</button>
             </div>
         </form>
 

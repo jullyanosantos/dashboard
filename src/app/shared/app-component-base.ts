@@ -3,10 +3,10 @@ import { ToastrNotifyService } from '../../assets/lib/service-base/tostr-notify/
 
 export abstract class AppComponentBase {
 
-    // tostrNotify: ToastrNotifyService;
+    tostrNotify: ToastrNotifyService;
     
     constructor(injector: Injector) {
     
-        // this.tostrNotify = injector.get(ToastrNotifyService);
+        this.tostrNotify = injector.get(ToastrNotifyService);
     }
 }

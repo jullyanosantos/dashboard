@@ -4,6 +4,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { DetailsModalComponent } from './details-modal.component';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AppComponentBase } from '../shared/app-component-base';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 interface Parceiro {
@@ -25,6 +26,12 @@ export class HomeComponent extends AppComponentBase implements OnInit {
   typeSelected: string;
   public isLoading = false;
 
+  form: FormGroup = new FormGroup({
+    username: new FormControl(''),
+    startDateControl: new FormControl('')
+  });
+  submitted = false;
+
   date = new Date();
 
   first: number = 0;
@@ -40,10 +47,19 @@ export class HomeComponent extends AppComponentBase implements OnInit {
 
   constructor(
     injector: Injector,
+    private fb: FormBuilder
   ) {
     super(injector);
     this.showSpinner();
     this.typeSelected = 'ball-fussion';
+
+    this.form = this.fb.group({
+      username: ['', Validators.required],
+      startDateControl: ['', Validators.required]
+
+    });
+
+    this.tostrNotify.show("sfs");
 
     this.initDate();
 
@@ -87,5 +103,23 @@ export class HomeComponent extends AppComponentBase implements OnInit {
 
   ngOnInit(): void {
 
+  }
+
+  get f(): { [key: string]: AbstractControl } {
+    return this.form.controls;
+  }
+
+  onSubmit(formSave: any) {
+    debugger
+    this.submitted = true;
+
+    if (this.form.invalid) {
+      return;
+    }
+  }
+
+  onReset(): void {
+    this.submitted = false;
+    this.form.reset();
   }
 }
