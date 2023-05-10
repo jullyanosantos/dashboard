@@ -156,32 +156,54 @@
                         [options]="parceiros" [(ngModel)]="selectedParceiro" optionLabel="name"
                         class="p-inputtext-sm"></p-dropdown>
                 </div>
+
+                <!-- <div class="col-md-4 col-12">
+                    <label for="username">User Name</label>
+                    <input type="text" appValidationLabel
+                    id="username"
+                    formControlName="username"
+                    [formErrorsArr]="formErrorsArr"
+                    fieldInfo="username is a required field"
+                    (formErrorsCount)='formErrorsEvent($event)'
+                    class="form-control" autofocus />
+                  </div> -->
+
                 <div class="form-group col-md-6">
                     <label for="username">Username</label>
-                    <input id="username" name="username" required pInputText #username formControlName="username"
-                        [style]="{'minWidth':'100%'}"
-                        [ngClass]="{ 'ng-invalid ng-dirty': submitted && f['username'].errors }"
-                        class="p-inputtext-sm" />
-                    <div *ngIf="submitted && f['username'].errors" class="text-danger">
-                        <small *ngIf="f['username'].errors['required']">Username is required</small>
+                    <div class="form-control-wrapper">
+                        <input id="username" name="username" required pInputText #username formControlName="username"
+                            [style]="{'minWidth':'100%'}"
+                            [ngClass]="{ 'ng-invalid ng-dirty': submitted && f['username'].errors }"
+                            class="p-inputtext-sm" />
+
+                        <span *ngIf="submitted && f['startDateControl'].errors" class="error-icon-hover-area"
+                            data-toggle="tooltip" data-placement="right" title="User Name is required"></span>
+                        <div *ngIf="submitted && f['username'].errors" class="text-danger"
+                            pTooltip="Username is required">
+                            <small *ngIf="f['username'].errors['required']">Username is required</small>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="form-row">
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-4 ">
                     <label for="inputDtinicio">Data Início</label>
                     <p-calendar id="inputDtInicio" name="inputDtInicio" formControlName="startDateControl"
                         [required]="true"
                         [ngClass]="{ 'ng-invalid ng-dirty': submitted && f['startDateControl'].errors }"
                         [style]="{'minWidth':'100%'}" class="p-inputtext-sm" [(ngModel)]="date"
                         dateFormat="dd/mm/yy"></p-calendar>
-                    <div *ngIf="submitted && f['startDateControl'].errors" class="text-danger">
+                    <span *ngIf="submitted && f['startDateControl'].errors" class="error-icon-hover-area"
+                        data-toggle="tooltip" data-placement="right" title="User Name is required"></span>
+
+                    <!-- <div *ngIf="submitted && f['startDateControl'].errors" class="text-danger">
                         <small *ngIf="f['startDateControl'].errors['required']">Startdate is required</small>
-                    </div>
+                    </div> -->
+
                 </div>
                 <div class="form-group col-md-4">
                     <label for="inputDtFim">Data Fim</label>
-                    <p-calendar name="inputDtFim" id="inputDtFim" [style]="{'minWidth':'100%'}" class="p-inputtext-sm"
+                    <p-calendar name="inputDtFim" id="inputDtFim" [showTime]="true" [style]="{'minWidth':'100%'}" class="p-inputtext-sm"
                         [(ngModel)]="date" dateFormat="dd/mm/yy"></p-calendar>
                 </div>
                 <div class="form-group col-md-3">
@@ -192,6 +214,32 @@
                 </div>
             </div>
         </form>
+        
+        <div class ="row">
+            
+        </div>
+
+        <!-- <div class="row">
+            <div class="col-md-4">
+                <h4 class="title">Datetime Picker</h4>
+                <div class="form-group">
+                    <input id="datetimepicker" type="text" class="form-control datetimepicker"
+                        placeholder="Datetime Picker Here">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h4 class="title">Date Picker</h4>
+                <div class="form-group">
+                    <input type="text" class="form-control datepicker" placeholder="Date Picker Here">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h4 class="title">Time Picker</h4>
+                <div class="form-group">
+                    <input type="text" class="form-control timepicker" placeholder="Time Picker Here">
+                </div>
+            </div>
+        </div> -->
 
         <!-- </div> -->
         <!-- </form> -->

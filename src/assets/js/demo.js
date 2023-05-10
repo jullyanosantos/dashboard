@@ -7,6 +7,7 @@ $(function () {
     $full_page = $('.full-page');
     $sidebar_responsive = $('body > .navbar-collapse');
     window_width = $(window).width();
+    
     fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
 
     if (window_width > 767 && fixed_plugin_open == 'Dashboard') {
@@ -50,11 +51,14 @@ $(function () {
         var new_color = $(this).data('color');
         if ($sidebar.length != 0) {
             $sidebar.attr('data-color', new_color);
+            $( "div.wrapper" ).attr('data-color', new_color);
         }
         if ($full_page.length != 0) {
+            debugger
             $full_page.attr('filter-color', new_color);
         }
         if ($sidebar_responsive.length != 0) {
+            debugger
             $sidebar_responsive.attr('data-color', new_color);
         }
     });
@@ -101,7 +105,6 @@ $(function () {
 
     $(document).on('click', '.switch-image input', function () {
 
-        debugger
         $sidebar = $('.sidebar');
         $sidebar_img_container = $sidebar.find('.sidebar-background');
         $full_page_background = $('.full-page-background');
@@ -205,13 +208,64 @@ $(function () {
             $('.switch-nav .bootstrap-switch').removeClass("bootstrap-switch-on")
         }
     });
+
+    // demo.initPicker();
 });
 
 type = ['primary', 'info', 'success', 'warning', 'danger'];
 
 demo = {
+    //teste datepicker, pode até remover caso não funcione
+    initDatePicker: function(){
+
+        if ($("#datetimepicker").length != 0) {
+            $('.datetimepicker').datetimepicker({
+                icons: {
+                    time: "fa fa-clock-o",
+                    date: "fa fa-calendar",
+                    up: "fa fa-chevron-up",
+                    down: "fa fa-chevron-down",
+                    previous: 'fa fa-chevron-left',
+                    next: 'fa fa-chevron-right',
+                    today: 'fa fa-screenshot',
+                    clear: 'fa fa-trash',
+                    close: 'fa fa-remove'
+                }
+            });
+            $('.datepicker').datetimepicker({
+                format: 'MM/DD/YYYY',
+                icons: {
+                    time: "fa fa-clock-o",
+                    date: "fa fa-calendar",
+                    up: "fa fa-chevron-up",
+                    down: "fa fa-chevron-down",
+                    previous: 'fa fa-chevron-left',
+                    next: 'fa fa-chevron-right',
+                    today: 'fa fa-screenshot',
+                    clear: 'fa fa-trash',
+                    close: 'fa fa-remove'
+                }
+            });
+            $('.timepicker').datetimepicker({
+                format: 'h:mm A',
+                icons: {
+                    time: "fa fa-clock-o",
+                    date: "fa fa-calendar",
+                    up: "fa fa-chevron-up",
+                    down: "fa fa-chevron-down",
+                    previous: 'fa fa-chevron-left',
+                    next: 'fa fa-chevron-right',
+                    today: 'fa fa-screenshot',
+                    clear: 'fa fa-trash',
+                    close: 'fa fa-remove'
+                }
+            });
+        };
+
+    },
     initPickColor: function () {
         $('.pick-class-label').click(function () {
+            debugger
             var new_class = $(this).attr('new-class');
             var old_class = $('#display-buttons').attr('data-class');
             var display_div = $('#display-buttons');

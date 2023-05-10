@@ -1,0 +1,21 @@
+<div class="card flex justify-content-center">
+
+    <p-autoComplete
+        [(ngModel)]="selectedUser"
+        [suggestions] = "filteredUsers"
+        (completeMethod) = "filterUser($event)"
+        [dropdown] = "true"
+        placeholder="--Selecione--"
+        [style]="{minWidth: '100%'}"
+        class="p-inputtext-sm"
+        (onSelect)="onChange($event)"
+        field="first_name">
+        <ng-template let-user pTemplate="item">
+            <div class="user-item">
+                <div>
+                    {{user.first_name}}
+                </div>
+            </div>
+        </ng-template>
+    </p-autoComplete>
+</div>

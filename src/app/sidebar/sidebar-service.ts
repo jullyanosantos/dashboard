@@ -9,11 +9,11 @@ export class SidebarService {
     constructor(private router: Router) { }
 
     menus = [
-        { path: '/dashboard', title: 'Dashboard', icon: 'nc-icon nc-app', class: '' },
+        { path: '/dashboard', title: 'Dashboard', icon: 'nc-icon nc-chart', class: '' },
         {
             title: 'User Profile',
             path: '/user',
-            icon: 'nc-icon nc-app',
+            icon: 'nc-icon nc-single-02',
             active: true,
             type: 'simple',
             permission: ['Pages.Users'] //define se será exibido no menu

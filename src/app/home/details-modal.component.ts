@@ -39,7 +39,6 @@ export class DetailsModalComponent implements OnInit {
       this.editUserRoleModal,
       Object.assign({}, { class: 'gray modal-xl' })
     );
-
   }
 
   ngOnInit(): void {

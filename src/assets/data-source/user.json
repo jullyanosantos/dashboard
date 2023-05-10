@@ -1,0 +1,16 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "first_name": "Juliano Santos",
+            "cpf": "32429699970",
+            "ativo": true
+        },
+        {
+            "id": 1,
+            "first_name": "Miguel Correia",
+            "cpf": "32429699970",
+            "ativo": false
+        }
+    ]
+}

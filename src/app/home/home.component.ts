@@ -1,10 +1,11 @@
-import { Component, Injector, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Injector, OnInit, Output, Renderer2, TemplateRef, ViewChild } from '@angular/core';
 import { LocationStrategy, PlatformLocation, Location } from '@angular/common';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { DetailsModalComponent } from './details-modal.component';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AppComponentBase } from '../shared/app-component-base';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ValidationMessageService } from '../shared/directive/validation-msg.service';
 
 
 interface Parceiro {
@@ -47,7 +48,10 @@ export class HomeComponent extends AppComponentBase implements OnInit {
 
   constructor(
     injector: Injector,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private validErrorMsgService: ValidationMessageService,
+    private el: ElementRef,
+    private ren: Renderer2
   ) {
     super(injector);
     this.showSpinner();
@@ -102,7 +106,8 @@ export class HomeComponent extends AppComponentBase implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.formContentFunc();
+    this.validationErrorMsg();
   }
 
   get f(): { [key: string]: AbstractControl } {
@@ -122,4 +127,55 @@ export class HomeComponent extends AppComponentBase implements OnInit {
     this.submitted = false;
     this.form.reset();
   }
+
+  formContent : any= {"username": "Conteudo"};
+  formErrorsArr = [];
+  title: String = "";
+  fieldInfoMsgArr: any[] = [];
+  errors: any;
+  isFieldExit = false;
+  @Output() formErrorsCount: EventEmitter<any> = new EventEmitter();
+
+
+  formContentFunc() {
+
+    this.formContent = ["username"];
+    // this.createForm();
+  }
+
+  validationErrorMsg() {
+
+    debugger
+    if (this.validErrorMsgService.validationErrorObj.length === 0) {
+      this.fieldInfoMsgArr = ["username"];
+    }
+  }
+  formErrorsEvent(evt: any) {
+    debugger
+    this.errors = evt;
+  }
+
+  verifyForm() {
+    const cloneErrors = this.errors;
+    console.log(this.form.controls);
+    Object.keys(this.form.controls).forEach(key => {
+      this.el.nativeElement.querySelector('#' + key).classList.add('errorfield');
+      this.el.nativeElement.querySelector('#' + key).parentElement.querySelector('label').classList.add('errorlabel');
+      const obj = { fieldName: key };
+      if (cloneErrors.length > 0) {
+        for (let i = 0; i < cloneErrors.length; i++) {
+          if (cloneErrors[i].fieldName === key) {
+            this.isFieldExit = true;
+          }
+        }
+      }
+      if (!this.isFieldExit) {
+        this.errors.push(obj);
+      }
+
+      this.isFieldExit = false;
+    });
+    this.formErrorsCount.emit(this.errors);
+  }
+
 }

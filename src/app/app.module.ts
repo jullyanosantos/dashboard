@@ -13,6 +13,7 @@ import { NavbarModule } from './shared/navbar/navbar.module';
 import { FooterModule } from './shared/footer/footer.module';
 import { SidebarModule } from './sidebar/sidebar.module';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,10 +34,10 @@ import { SidebarModule } from './sidebar/sidebar.module';
 
   ],
   providers: [],
-  bootstrap: [AppComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
     NO_ERRORS_SCHEMA
-  ]
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

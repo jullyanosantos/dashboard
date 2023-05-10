@@ -1,62 +1,138 @@
 /* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
+
+html {
+  margin: 0px;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  margin: 0px;
+  min-height: 100%;
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--bs-font-sans-serif);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+table thead th {
+  text-align: left;
+  font-size: 12px;
+}
+
+.modal-title {
+  margin-top: 0px !important;
+}
+
+table tbody tr td {
+  font-size: 12px;
+}
+
+.modal-title {
+  margin-top: 0px !important;
+}
+
+.right {
+  text-align: right;
+}
+
+.left {
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+}
+
+.orange {
+  color: #ffa534
+}
+
+.green {
+  color: green;
+}
+
+.primary-extended {
+  color: #FFF !important;
+  background-color: orange !important;
+  border-color: orange !important;
+}
+
+.card-header-action {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
 
 @keyframes spin {
-    0% {
-        transform: translateZ(0) rotate(0)
-    }
+  0% {
+    transform: translateZ(0) rotate(0)
+  }
 
-    100% {
-        transform: translateZ(0) rotate(360deg)
-    }
+  100% {
+    transform: translateZ(0) rotate(360deg)
+  }
 }
 
 .freeze-ui {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 999999999;
-    background-color: rgba(10,23,55,0);
-    opacity: .8;
-    transition: opacity .25s
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999999999;
+  background-color: rgba(10, 23, 55, 0);
+  opacity: .8;
+  transition: opacity .25s
 }
 
-    .freeze-ui.is-unfreezing {
-        opacity: 0
-    }
+.freeze-ui.is-unfreezing {
+  opacity: 0
+}
 
-    .freeze-ui:after {
-        content: attr(data-text);
-        display: block;
-        max-width: 125px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,-50%);
-        font-size: 20px;
-        font-family: sans-serif;
-        color: #636363;
-        text-align: center;
-        text-transform: uppercase
-    }
+.freeze-ui:after {
+  content: attr(data-text);
+  display: block;
+  max-width: 125px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  font-family: sans-serif;
+  color: #636363;
+  text-align: center;
+  text-transform: uppercase
+}
 
-    .freeze-ui:before {
-        content: "";
-        display: block;
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        border-width: 2px;
-        border-style: solid;
-        /* border-color: transparent #FF7020 #FF7020; */
-        border-color: transparent #3f51b5 #3f51b5; 
-        position: absolute;
-        top: calc(50% - 75px);
-        left: calc(50% - 75px);
-        will-change: transform;
-        animation: spin .75s infinite ease-in-out
-    }
+.freeze-ui:before {
+  content: "";
+  display: block;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border-width: 2px;
+  border-style: solid;
+  /* border-color: transparent #FF7020 #FF7020; */
+  border-color: transparent #3f51b5 #3f51b5;
+  position: absolute;
+  top: calc(50% - 75px);
+  left: calc(50% - 75px);
+  will-change: transform;
+  animation: spin .75s infinite ease-in-out
+}
 
 /* 
     @keyframes spin {
@@ -115,3 +191,80 @@
         will-change: transform;
         animation: spin 0.75s infinite ease-in-out;
       } */
+
+.boostrap-navbar .nav li.active>a,
+.sidebar .nav li.active>a {
+  color: #fff;
+  opacity: 1;
+  background: rgba(255, 255, 255, 23);
+}
+
+div.ellips {
+  white-space: nowrap;
+  width: 100px;
+  overFlow: hidden;
+  text-overflow: ellips;
+}
+
+a.noclick {
+  pointer-events: none;
+}
+
+.stats-title .ellips {
+  white-space: nowrap;
+  width: 200px;
+  overFlow: hidden;
+  text-overflow: ellips;
+}
+
+input.p-inputtext.p-component {
+  height: 36px !important;
+}
+
+input.p-inputtext.p-inputtext-sm {
+  height: 36px !important;
+}
+
+.p-autocomplete.p-component.p-autocomplete-dd {
+  height: 36px !important;
+}
+
+.p-autocomplete-input {
+  border-right: transparent !important;
+}
+
+button.p-autocomplete-dropdown {
+  background: transparent !important;
+  border: 1px solid #ced4da;
+  border-left: transparent !important;
+}
+
+button.p-autocomplete-dropdown>span.p-button-icon.pi-chevron-down {
+  color: #6c757d;
+}
+
+p-dialog .ui-dialog {
+  overflow: scroll;
+  max-height: 10%;
+}
+
+.c-dialog-overflow {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  overflow-y: scroll;
+}
+
+.container-modal {
+  height: 300px;
+  overflow-y: scroll;
+}
+
+.p-datatable .p-datatable-tbody > tr > td {
+  text-align: left;
+  border: 1px solid #dee2e6;
+  border-width: 0 0 1px 0;
+  padding: 0 0 0 1rem !important; 
+}

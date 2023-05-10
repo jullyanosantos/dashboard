@@ -1,0 +1,65 @@
+<ng-template #createUserModal>
+    <div class="modal-header panel-heading">
+        <h4 class="modal-title">
+            <i class="pi pi-plus" style="margin-right: 5px; color: orange"></i>
+            _adicionar usuário
+        </h4>
+        <button type="button" class="close pull-right" aria-label='Close'>
+            <span aria-hidden="">x</span>
+        </button>
+    </div>
+    <form #formSave [formGroup]="form" (submit)="onSave()">
+        <div class="modal-body">
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label for="inputCpf">Cpf</label>
+                    <p-inputMask id="inputCpf" name="cpf" formControlName="cpfControl" type="text" [required]="true"
+                        ngClass="{'ng-invalid ng-dirty' : submitted && f[cpfControl]}" class="p-inputtext-sm"
+                        [style]="{ minWidth: '100%' }" mask="999.999.999-99" placeholder="999.999.999-99">
+                    </p-inputMask>
+                    <div *ngIf="submitted && f['cpfControl'].errors" class="text-danger">
+                        <small *ngIf="f['cpfControl'].errors['required']">
+                            Cpf é obrigatório
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="inputFristName">Nome</label>
+                    <input id="firstName" name="firstName" type="text" formControlName="firstNameControl"
+                        [required]="true" ngClass="{
+                    'ng-invalid ng-dirty' : submitted && f[firstNameControl]
+                }" class="p-inputtext p-inputtext-sm" [style]="{minWidth: '100%'}" placeholder="Nome" />
+                    <div *ngIf="submitted && f['firstNameControl'].errors" class="text-danger">
+                        <small *ngIf="f['firstNameControl'].errors['required']">
+                            Nome é obrigatório
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-1 center" style="line-height: 4;">
+                    <p-checkbox 
+                        pTooltip="Ativo/Inativo"
+                        id="inputActive" 
+                        [required]="true" 
+                        formControlName="activeControl"
+                        [binary]="true">
+                    </p-checkbox>
+                    <div *ngIf="submitted && f['activeControl'].errors" class="text-danger">
+                        <small *ngIf="f['activeControl'].errors['required']">
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" (click)="modalRef.hide()">
+                <i class="pi pi-times"></i>
+                Fechar
+            </button>
+            <button type="submit" [disabled]="isBusy" class="btn btn-primary">
+                <i class="pi pi-check"></i>
+                Ok
+            </button>
+        </div>
+    </form>
+</ng-template>
